@@ -1,7 +1,6 @@
 package steps;
 
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import io.restassured.response.Response;
@@ -12,7 +11,6 @@ import java.util.HashMap;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasItem;
 
 public class CurrentWeatherSteps {
 
@@ -32,6 +30,7 @@ public class CurrentWeatherSteps {
 
     @Then("^I should see the temperature as \"([^\"]*)\"$")
     public void iShouldSeeTheTemperatureAs(String temperature) throws Throwable {
-        assertThat(response.getBody().jsonPath().get("current_weather.temperature"), equalTo(temperature));
+        String result = response.getBody().jsonPath().get("current_weather.temperature").toString();
+        assertThat(result, equalTo(temperature));
     }
 }

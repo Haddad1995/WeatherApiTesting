@@ -1,6 +1,5 @@
 package steps;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import io.restassured.response.Response;
@@ -21,7 +20,7 @@ public class GetPostSteps {
 
     @Then("^I should see the status code as \"([^\"]*)\"$")
     public void iShouldSeeTheStatusCodeAs(String statusCode) throws Throwable {
-        assertThat(response.getStatusCode(), equalTo("200"));
+        assertThat(response.getStatusCode(), equalTo(200));
 
     }
 
